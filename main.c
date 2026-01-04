@@ -1,17 +1,20 @@
-#include <util/delay.h>
 #include "include/nano.h"
+#include "mcu.h"
+#include <util/delay.h>
 
 void setup() {
-  set_dir(LED1, OUTPUT);
+  union PIN p = { .led = LED1 };
+  mcu_pin_dir(p, OUTPUT);
+}
+
+void loop() {
+  mcu_led_on(LED1);
+  mcu_delay_ms(600);
+  mcu_led_off(LED1);
+  mcu_delay_ms(300);
 }
 
 int main(void) {
   setup();
-
-  while (1) {
-    pin_write(LED1, HIGH);
-    _delay_ms(500);
-    pin_write(LED1, LOW);
-    _delay_ms(500);
-  }
+  while (1) loop();
 }

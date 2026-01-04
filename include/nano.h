@@ -1,3 +1,6 @@
+#ifndef MCU_NANO_H
+#define MCU_NANO_H
+
 #include "mcu.h"
 #include <avr/io.h>
 
@@ -6,44 +9,59 @@
 #endif
 
 enum RST_PIN{
-  RST1=PC6,
-  RST2=PC6,
+  // Port C
+  RST1=1,
+  RST2=2,
 };
 
 enum DIGITAL_PIN {
-  RX=PD0,
-  TX=PD1,
-  D0=PD0,
-  D1=PD1,
-  D2=PD2,
-  D3=PD3,
-  D4=PD4,
-  D5=PD5,
-  D6=PD6,
-  D7=PD7,
-  D8=PB0,
-  D9=PB1,
-  D10=PB2,
-  D11=PB3,
-  D12=PB4,
-  D13=PB5,
-  D14=PC0,
-  D15=PC1,
-  D16=PC2,
-  D17=PC3,
-  D18=PC4,
-  D19=PC5,
-};
-
-enum LED {
-  LED1=PB5,
+  // Port D
+  RX=3,
+  TX=4,
+  D0=5,
+  D1=6,
+  D2=7,
+  D3=8,
+  D4=9,
+  D5=10,
+  D6=11,
+  D7=12,
+  // Port B
+  D8=13,
+  D9=14,
+  D10=15,
+  D11=16,
+  D12=17,
+  D13=18,
+  // Port C
+  D14=19,
+  D15=20,
+  D16=21,
+  D17=22,
+  D18=23,
+  D19=24,
 };
 
 enum ANALOG_PIN {
-  A0=PC0,
-  A1=PC1,
-  A2=PC2,
-  A3=PC3,
-  A4=PC4,
-  A5=PC5,
+  // Port C
+  A0=25,
+  A1=26,
+  A2=27,
+  A3=28,
+  A4=29,
+  A5=30,
 };
+
+enum LED {
+  // Port B
+  LED1=31,
+};
+
+union PIN {
+  enum RST_PIN rpin;
+  enum DIGITAL_PIN dpin;
+  enum ANALOG_PIN apin;
+  enum LED led;
+};
+
+#endif
