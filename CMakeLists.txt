@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(SimpleAvrApp C)
+project(SMCUF C)
 
 set(CMAKE_C_COMPILER avr-gcc)
 set(MCU "atmega328p")
@@ -12,7 +12,7 @@ set(PORT "/dev/ttyUSB0")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mmcu=${MCU} -DF_CPU=${F_CPU} -Os -Wall")
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_executable(${PROJECT_NAME}.elf main.c include/nano.c)
+add_executable(${PROJECT_NAME}.elf main.c)
 
 target_include_directories(${PROJECT_NAME}.elf
     PRIVATE

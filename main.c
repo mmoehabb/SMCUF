@@ -1,5 +1,4 @@
 #include "include/nano.h"
-#include "mcu.h"
 #include <util/delay.h>
 
 void setup() {
